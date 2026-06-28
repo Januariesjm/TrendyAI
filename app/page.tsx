@@ -423,7 +423,7 @@ export default function Home() {
                       <span style={{ fontSize: "0.9rem", fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                         {v.prompt || "AI Generation Video"}
                       </span>
-                      <Badge variant={v.status === "completed" ? "success" : v.status === "failed" ? "destructive" : "warning"}>
+                      <Badge variant={v.status === "completed" ? "success" : v.status === "failed" ? "error" : "warning"}>
                         {v.status?.toUpperCase() || "PENDING"}
                       </Badge>
                     </div>
