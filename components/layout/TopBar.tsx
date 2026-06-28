@@ -95,15 +95,48 @@ export default function TopBar({ collapsed }: TopBarProps) {
         transition: "left 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
       }}
     >
-      {/* Search - Visible always or just logged in */}
-      <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
-        <Search size={16} style={{ position: "absolute", left: "12px", color: "var(--text-muted)" }} />
-        <input
-          type="text"
-          placeholder="Search videos, templates..."
-          className="form-input"
-          style={{ paddingLeft: "2.25rem", width: "260px", height: "36px", fontSize: "0.85rem" }}
-        />
+      {/* Left section: Logo & Brand for guest / Search for authenticated */}
+      <div style={{ display: "flex", alignItems: "center" }}>
+        {!user ? (
+          <Link href="/" style={{ display: "flex", alignItems: "center", gap: "0.65rem", textDecoration: "none" }}>
+            <div
+              style={{
+                background: "var(--grad-primary)",
+                width: "30px",
+                height: "30px",
+                borderRadius: "var(--radius-sm)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 0 12px rgba(157,78,221,0.25)",
+                flexShrink: 0,
+              }}
+            >
+              <Sparkles size={16} color="#fff" />
+            </div>
+            <span
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 800,
+                fontSize: "1.1rem",
+                letterSpacing: "-0.03em",
+                color: "var(--text-primary)",
+              }}
+            >
+              Trendy<span className="gradient-text">AI</span>
+            </span>
+          </Link>
+        ) : (
+          <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
+            <Search size={16} style={{ position: "absolute", left: "12px", color: "var(--text-muted)" }} />
+            <input
+              type="text"
+              placeholder="Search videos, templates..."
+              className="form-input"
+              style={{ paddingLeft: "2.25rem", width: "260px", height: "36px", fontSize: "0.85rem" }}
+            />
+          </div>
+        )}
       </div>
 
       {/* Right controls */}
